@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Form Validon</title>
+      
+        <script text="text/javascript">
+        function validite(){
+           if(document.myForm.Name.value == ""){
+               alert("name please");
+               document.myForm.Name.focus();
+               return false;
+           } 
+           if(document.myForm.Lastname.value == ""){
+           alert("Lastname please");
+           document.myForm.Lastname.focus();
+           return false
+           }
+        
+        if(document.myForm.cuntry.value == "-1"){
+            alert("chose your cuntry");
+            document.myForm.cuntry.focus();
+            return false
+        }
+        return(true)
+        }
+        </script>
+    </head>
+    <style>
+    #div-main{
+        width: 500px;
+        height: 100vh;
+        background-color: purple;
+        margin:0 auto;
+        padding: 85px
+    }
+    form>input{
+        width: 100px
+    }
+    </style>
+    
+    <body>
+        <div id="div-main">
+            <form  name="myForm" onsubmit = "return(validite());">   
+                
+                <table cellspaceing="2" cellpadding="2" border="2.5">
+                    <tr>
+                        <td align="right">Name</td>
+                        <td><input type="text"name="Name"/></td>
+
+                    </tr>
+                    <tr  align="right">
+                        <td>Lastname</td>
+                        <td><input type="text" name="Lastname"/></td>
+                    </tr>
+                    <tr>
+                        
+
+                        <td align="right">cuntry</td>
+                        <td>
+                        <select name="cuntry">
+                            <option value=-1 selected>[chose yours]</option>
+                            <option value="1">Kosovo</option>
+                             <option value="2">Germany</option>
+                             <option value="3">Englend</option>
+                            
+                        </select>
+                        </td>
+                    </tr>
+                    <td align="right"></td>
+                    <td><input type="submit" value="submit" ></td>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
