@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+            <script>
+
+var xmlString = '<team_members>'+
+                   '<member surname="Shabani" name="Valon" age="18">'+
+                      '<position name="Full stack developer"/>'+
+                      '<gender value="Male"/>'+
+
+                   '</member>'+
+                   '<member surname="Shabani" name="Valentina" age="18">'+
+                        '<position name="Mobile apps developer"/>'+
+                        '<gender value="Female"/>'+
+                   '</member>'+
+                   '<member surname="Ramadani" name="Getoar" age="18">'+
+                        '<position name="Developer"/>'+
+                        '<gender value="Male"/>'+
+                   '</member>'+
+                 '</team_members>';
+// used to inc or decrements throw cars 
+var i = 0;
+
+$(document).ready(function(){
+
+  xml = $.parseXML( xmlString );
+  $xml = $( xml );
+  $members = $xml.find( "member" );
+  getPerson($members)
+  
+  $("#btnnext").click(function(){
+     i++;
+     getPerson($members);
+  })
+  
+  $("#btnprev").click(function(){
+     i--;
+     getPerson($members);
+  })
+      
+      
+  function getPerson(members) {
+    var html ="";
+    if(members.length != 'undefined') {
+      if(members.length > 0) {
+        if(i<members.length){
+           var name = $(members[i]).attr('name');
+           var surname = $(members[i]).attr('surname');
+           var age = $(members[i]).attr('age');
+
+           var $position = $(members[i]).find('position');
+           var $gender = $(members[i]).find('gender');
+           var positionname = $($position).attr('name');
+           var gendervalue = $($gender).attr('value');
+           html += "<div>Name : "+name+"</div>";
+           html += "<div>Surname : "+surname+"</div>";
+           html += "<div>Age : "+age+"</div>";
+           html += "<div>Position : "+positionname+"</div>";
+           html += "<div>Gender : "+gendervalue+"</div>";
+
+          
+           $("#person_info").html(html);
+           btnClick();
+        }
+      }
+    }
+  }
+
+  function btnClick() {
+    i == 0 ? $("#btnprev").attr("disabled","disabled") :$("#btnprev").removeAttr("disabled");
+    i == $members.length-1 ? $("#btnnext").attr("disabled","disabled") : $("#btnnext").removeAttr("disabled");
+  
+  }
+
+
+})
+</script>
+<style>
+    .container{
+        width:100%;
+        height:100vh;
+        display: inline;
+    }
+    body{
+        margin:0px;
+    }
+    .side-bar{
+        width:20%;
+        height: 100vh;
+        float:left;
+        display: block;
+
+    }
+    .content{
+        width:80%;
+        height: 100vh;
+        background-color: gainsboro;
+        float:left;
+    }  
+    .content button{
+        margin:10px;
+        border:none;
+        font-size: xx-large;
+        color:gray;
+    }  
+    .menu-list{
+        list-style-type: none;
+        margin-top:50px;
+    }
+    .menu-list li{
+        width:100%;
+        padding:10px;
+        font-weight: bold;
+    
+    }
+    .menu-list li:hover{
+        background-color:grey;
+        color:white;    
+    }
+</style>
+
+        </head>
+    <body>
+
+        <div class="container">
+            <div class="side-bar" id="side-bar">
+                 <h3>SideBar</h3>
+                 <ul class="menu-list">
+                     <li>Home</li>
+                     <li>About us</li>
+                     <li>Mission</li>
+                     <li>Contact us</li>  
+                 </ul>
+            </div>
+            <div class="content" id="content" >
+
+
+<button id="btnprev" disabled>prev</button>
+<button id="btnnext" disabled>next</button>
+<br>  <br>  
+<div id ="person_info">
+    
+</div
+
+        
+
+    </body>
+</html>
