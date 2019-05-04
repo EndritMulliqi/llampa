@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #panle,.flip{
+                font-size:12;
+                padding: 20px;
+                text-align: center;
+                background-color: green;
+                color:white;
+                border:solid 3px green;
+                margin: auto;
+            }
+            #panel{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="flip" onclick="myfunction()">Click to show panel </p>
+        <div id="panel">
+            <p>this panel learn how to learn css for free</p>
+           <p>Now we learn css in w3school</p>
+           <p>YOU GO TO FUCK NOW</p>
+        </div>
+        <script>
+            function myfunction(){
+                document.getElementById("panel").style.display ="block";
+            }
+        </script>
+    </body>
+</html>
